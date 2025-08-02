@@ -16,9 +16,9 @@ export const getTasks = asyncHandler(async (req, res) => {
 });
 
 export const createTask = async (req, res) => {
-  const { title, dueDate, task, complete } = req.body;
+  const { title, dueDate, complete } = req.body;
 
-  if (!title || !dueDate || !task || complete === undefined) {
+  if (!title || !dueDate || complete === undefined) {
     res.status(400);
     throw new Error("All fields are required!");
   }
@@ -27,7 +27,6 @@ export const createTask = async (req, res) => {
     userId: req.user.id,
     title,
     dueDate,
-    task,
     complete,
   });
 
@@ -35,7 +34,6 @@ export const createTask = async (req, res) => {
     res.status(201).json({
       responsObj: {
         id: taskCreation._id,
-        task: taskCreation.task,
         dueDate: taskCreation.dueDate,
         title: taskCreation.title,
         complete: taskCreation.complete,

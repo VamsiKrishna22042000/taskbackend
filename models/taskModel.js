@@ -15,10 +15,6 @@ const taskModel = mongoose.Schema(
       type: String,
       required: [true, "Due Date is requried!"],
     },
-    task: {
-      type: String,
-      required: [true, "Task Details is required!"],
-    },
     complete: {
       type: Boolean,
       required: [true, "Complete is required!"],
