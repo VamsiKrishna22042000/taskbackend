@@ -15,7 +15,7 @@ export const getTasks = asyncHandler(async (req, res) => {
   }
 });
 
-export const createTask = async (req, res) => {
+export const createTask = asyncHandler(async (req, res) => {
   const { title, dueDate, complete } = req.body;
 
   if (!title || !dueDate || complete === undefined) {
@@ -45,7 +45,7 @@ export const createTask = async (req, res) => {
     res.status(400);
     throw new Error("Task creation failed");
   }
-};
+});
 
 export const updateTask = asyncHandler(async (req, res) => {
   if (!req.params.id) {
