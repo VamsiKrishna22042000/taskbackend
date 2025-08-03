@@ -13,7 +13,7 @@ const validateToken = asyncHandler(async (req, res, next) => {
     const token = obtainedToken.split(" ")[1];
     jwt.verify(token, process.env.SEC_TOKEN, (err, decode) => {
       if (err) {
-        res.status(400);
+        res.status(401);
         throw new Error("Unauthorized User");
       } else {
         req.user = decode.user;
