@@ -6,7 +6,7 @@ const validateToken = asyncHandler(async (req, res, next) => {
 
   if (obtainedToken) {
     if (typeof obtainedToken !== "string") {
-      res.status(400);
+      res.status(401);
       throw new Error("Unauthorized User");
     }
 
