@@ -51,10 +51,12 @@ export const signin = asyncHandler(async (req, res) => {
     const checkUserRegistration = await User.findOne({ email });
 
     if (checkUserRegistration) {
-      const comparePass = bcrypt.compare(
+      const comparePass = await bcrypt.compare(
         password,
         checkUserRegistration.password
       );
+
+      console.log(comparePass, "asdfklhjsadlfkjhasdflkhj");
 
       if (comparePass) {
         const token = jwt.sign(
